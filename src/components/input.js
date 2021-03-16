@@ -2,14 +2,13 @@ import React, {useState, useCallback} from 'react'
 
 export default function Input(props) {
 
-    const {createTimerFunc} = props
+    const {createTimerFunc, deleteTimerFunc} = props
     
     const [dateObj, setDateObj] = useState({hour: 0, minute: 0, second: 0})
 
     const hourHandler = useCallback(
         (e) => {
             setDateObj( {hour: e.target.value, minute: e.target.value, second: e.target.value})
-        console.log('input hour ' ,dateObj);
 
         },
         [],
@@ -17,7 +16,6 @@ export default function Input(props) {
     const minuteHandler = useCallback(
         (e) => {
             setDateObj({hour: e.target.value, minute: e.target.value, second: e.target.value})
-        console.log('input min ' ,dateObj);                                             
 
         },
         [],
@@ -25,17 +23,17 @@ export default function Input(props) {
     const secondHandler = useCallback(
         (e) => {
             setDateObj({hour: e.target.value, minute: e.target.value, second: e.target.value})
-        console.log('input sec ' ,dateObj);
 
         },
         [],
     )
 
     const createReminderHandler = ()=>{
-        
-
         createTimerFunc(dateObj)
         
+    }
+    const deleteReminder = ()=>{
+        deleteTimerFunc()
     }
 
 
@@ -46,6 +44,7 @@ export default function Input(props) {
             <input onChange={minuteHandler} value={dateObj.minute} placeholder='M'/>        
             <input onChange={secondHandler} value={dateObj.second} placeholder='S'/>
             <button onClick={createReminderHandler}> Create reminder </button>
+            <button onClick={deleteReminder}>Delete reminder</button>
         </div>
     )
 }
