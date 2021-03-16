@@ -9,10 +9,9 @@ export default function TimerDashboard() {
 
 
     const createTimerFunc = (date) => {
-        // setTime({hour: date.hour, minute: date.minute, second: date.second})
         setTime(time.hour = date.hour, time.minute = date.minute, time.second = date.second)
 
-        console.log('time ',date);
+        
         setDataDate(<TimerV2  hour={time.hour} minute={time.minute} second={time.second} />)
     }
 
